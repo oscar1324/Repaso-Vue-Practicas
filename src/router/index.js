@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Prueba from '../views/Prueba.vue'
+import Papa from '../views/Papa.vue';
 
 const routes = [
   {
@@ -10,10 +12,30 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/prueba',
+    component: Prueba
+  },
+  {
+    path: '/papa',
+    component: Papa
+  },
+  {
+    path: '/peticiones',
+    component: () => import('../views/Peticiones.vue')
+  },
+  { // ruta dínamica
+    path: '/rutas/:id',
+    name: 'rutas',
+    component: () => import('../views/Rutas.vue')
+  },
+  {
+    path: '/peticioneshijo',
+    name: 'peticioneshijo',
+    component: () => import('../components/Peticionbebe.vue')
   }
 ]
 
