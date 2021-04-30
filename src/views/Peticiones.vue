@@ -28,36 +28,36 @@
                 </div>
 
                 <div class="col-lg-12">
-                                    <table class="tt">
-                    <tr  class="tt">
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Edad</th>
-                        <th>Pais</th>
-                        <th>Altura</th>
-                        <th>Eliminar</th>
-                        <th>Actualizar</th>
-                        <th>
-                           Envio bb
-                        </th>
-                    </tr>
+                    <table class="tt">
+                        <tr  class="tt">
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Edad</th>
+                            <th>Pais</th>
+                            <th>Altura</th>
+                            <th>Eliminar</th>
+                            <th>Actualizar</th>
+                            <th>
+                            Envio bb
+                            </th>
+                        </tr>
 
-                    <tr  class="tt" v-for="cadaJugador, index in arrayJugadores" :key="index">
-                        <td>{{cadaJugador.id}}</td>
-                        <td>{{cadaJugador.nombre}}</td>
-                        <td>{{cadaJugador.apellido}}</td>
-                        <td>{{cadaJugador.edad}}</td>
-                        <td>{{cadaJugador.pais}}</td>
-                        <td>{{cadaJugador.altura}}</td>
-                        <td><button type="button" class="btn btn-danger" @click="eliminarJugador(cadaJugador.id)">Eliminar</button></td>
-                        <td> <button type="button" class="btn btn-primary" @click="actualizarJugador(cadaJugador.id)">Actualizar jugador</button></td>
-                        <td>
-                             <button type="button" class="btn btn-success" @click="pasarDato(cadaJugador.pais)">Envio Dato a hijo</button>
-                        </td>
-                        
-                    </tr>
-                </table>
+                        <tr  class="tt" v-for="cadaJugador, index in arrayJugadores" :key="index">
+                            <td>{{cadaJugador.id}}</td>
+                            <td>{{cadaJugador.nombre}}</td>
+                            <td>{{cadaJugador.apellido}}</td>
+                            <td>{{cadaJugador.edad}}</td>
+                            <td>{{cadaJugador.pais}}</td>
+                            <td>{{cadaJugador.altura}}</td>
+                            <td><button type="button" class="btn btn-danger" @click="eliminarJugador(cadaJugador.id)">Eliminar</button></td>
+                            <td> <button type="button" class="btn btn-primary" @click="actualizarJugador(cadaJugador.id)">Actualizar jugador</button></td>
+                            <td>
+                                <button type="button" class="btn btn-success" @click="pasarDato(cadaJugador.pais)">Envio Dato a hijo</button>
+                            </td>
+                            
+                        </tr>
+                    </table>
                 </div>
                 <hr>
 
@@ -68,8 +68,6 @@
                 </div>
 
             </div>
-
-
         </div>
     </div>
 </template>
@@ -94,19 +92,17 @@ export default {
                 altura: '173 cm'
             },
             jugadorActualizado : {
-                nombre: 'Karim',
-                apellido: 'Benzema',
-                edad:32,
-                pais:'Francia',
-                altura: '183 cm'
+                nombre: 'Óscar',
+                apellido: 'Izquierdo',
+                edad:21,
+                pais:'España',
+                altura: '187 cm'
             },
             nombrePlayer: '',
             variable: ''
-
         }
     },
     components: {peticionbebe},
-
     methods: {
 
         // Pasar dato a hijo
@@ -114,7 +110,6 @@ export default {
             console.log("Papa pasa a hijo: " + dato);
             this.variable = dato;
         },
-
 
         //----------------------------------------------------------------
 
@@ -127,13 +122,11 @@ export default {
             .catch(response => alert("Errores: " + response.status));
         },
 
-
         eliminarUsuarios(){
             axios.detele("https://jsonplaceholder.typicode.com/users/2")
         },
 
         sacarPost(){
-            
             axios.get("https://jsonplaceholder.typicode.com/posts")
             .then( response => {
                 this.arrayPosts = response.data;
@@ -150,7 +143,6 @@ export default {
                 this.arrayJugadores = response.data;
             })
             .catch( response => alert(" Errores: " + response.status))
-
     
         },
 
@@ -160,54 +152,30 @@ export default {
                 console.log("Enviado: " + response)
               //  this.$router.replace("/prueba");
             })
-            
         },
 
 
         actualizarJugador(id){
-            axios.put("http://localhost:3000/jugadores/" + id, this.jugador)
+            axios.put("http://localhost:3000/jugadores/" + id, this.jugadorActualizado)
             .then( (response) => {
                 console.log("Enviado: " + response)
               //  this.$router.replace("/prueba");
             })
-
         },
-
-        /*
-                actualizarJugador(id){
-              let post = {
-                nombre: 'David',
-                apellido: 'Villa',
-                edad: 39,
-                pais: 'España',
-                altura: '181 cm'
-                
-            };
-            axios.put("http://localhost:3000/jugadores/" + id, this.jugadorActualizado).then((result) => {
-                console.log(result);
-            });
-
-        }, */
 
         eliminarJugador(id){
             console.log("EL ID A BORRAR ES: " + id);
-            axios.delete("http://localhost:3000/jugadores/" + id)
-            
+            axios.delete("http://localhost:3000/jugadores/" + id)  
         },
         
         eliminarUnJugador(){
-
-            axios.delete("http://localhost:3000/jugadores/14")
-
-            
+            axios.delete("http://localhost:3000/jugadores/14")           
         },
 
         actualizarJugadores(){
             axios.post("http://localhost:3000/jugadores", this.jugador)
-            .then( (response) => {console.log("Enviado: " + response)})
-            
+            .then( (response) => {console.log("Enviado: " + response)})    
         },
-
     },
 }
 </script>
@@ -217,7 +185,6 @@ export default {
     color: white;
     background-color: brown;
 }
-
 .ul2{
   
     background-color: rgb(37, 155, 202);

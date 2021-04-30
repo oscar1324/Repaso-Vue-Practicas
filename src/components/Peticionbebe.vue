@@ -4,8 +4,8 @@
            <div class="col-lg-12">
                 <h2>Componente peticiones hijo:</h2>
                 <p>1) Vamos a recorrer el array, una petición solicitada para que nos de los jugadores del mismo pais.</p>
-            <button type="button" class="btn btn-danger" @click="plasmardato(valor)">Sacar pais</button>
-
+                <p>Nombre de pais recibido: {{nombrePais}}</p>
+                <button type="button" class="btn btn-danger" @click="plasmardato(nombrePais)">Sacar pais</button>
 
                 <div class="col-lg-12">
                     <table class="tt">
@@ -45,40 +45,21 @@ export default {
             arrayPais: []
         }
     },
-
-
-
     methods:{
 
-        // Petición get() sacando jugadores por pais ---> España
-        /*
-                darJugadoresPais(nombrePais){
-            console.log("Hijo recibe de papa: " + nombrePais);
-            axios.get('http://localhost:3000/jugadores?pais=' + nombrePais)
-            .then( (response)=> {
-                console.log(response);
-                this.arrayPais = response.data
-    
-            })
-        } */
         plasmardato(nombrePais){
             console.log("por el hijo recibe: " + nombrePais);
             axios.get('http://localhost:3000/jugadores?pais=' + nombrePais)
-            .then(response => this.array = response.data)
+            .then(response => this.arrayPais = response.data)
             .catch(response => alert("Errores: " + response.status));
         },
     },
-        props: ["nombrePais"],
-
-    /*
-    
-        watch: {
+    props: ["nombrePais"],
+    watch: {
             nombrePais(nuevo){
-            this.arrayPais = this.darJugadoresPais(nuevo);
-            }
-        }  */
-    
-
+            this.arrayPais = this.plasmardato(nuevo);
+        }
+    }  
 }
 </script>
 
