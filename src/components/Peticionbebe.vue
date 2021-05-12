@@ -21,12 +21,13 @@
                         </tr>
 
                         <tr  class="tt"  v-for="(cadaPis, index) in arrayPais" :key="index">
+                            <td>{{cadaPis.id}}</td>
                             <td>{{cadaPis.nombre}}</td>
                             <td>{{cadaPis.apellido}}</td>
                             <td>{{cadaPis.edad}}</td>
                             <td>{{cadaPis.pais}}</td>
                             <td>{{cadaPis.altura}}</td>
-                            <td>{{cadaPis.eliminar}}</td>
+
                             <td>x</td>
                             <td>x</td>
                         </tr>
