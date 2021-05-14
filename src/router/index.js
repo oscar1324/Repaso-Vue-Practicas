@@ -36,6 +36,21 @@ const routes = [
     path: '/peticioneshijo',
     name: 'peticioneshijo',
     component: () => import('../components/Peticionbebe.vue')
+  },
+  {
+    path: '/menu',
+    name: 'menu',
+    component: () => import('../views/Menu.vue')
+  },
+  {
+    path: '/menu1',
+    name: 'menu1',
+    component: () => import('../views/Menu1.vue')
+  },
+  {
+    path: '/menu2',
+    name: 'menu2',
+    component: () => import('../views/Menu2.vue')
   }
 ]
 
